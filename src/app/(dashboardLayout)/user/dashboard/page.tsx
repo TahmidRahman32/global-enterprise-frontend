@@ -1,9 +1,12 @@
+import Dashboard from '@/components/modules/user/dashboard/Dashboard';
+import UserDashboardContent from '@/components/modules/user/dashboard/Dashboard';
 import React from 'react';
 
 const UserDashboard = () => {
    return (
       <div>
-         <h1>User Dashboard</h1>
+         {/* <UserDashboardContent/> */}
+         <Dashboard/>
       </div>
    );
 };

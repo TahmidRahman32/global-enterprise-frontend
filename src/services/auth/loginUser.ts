@@ -89,12 +89,12 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
       if (redirectTo) {
          const requestedPath = redirectTo.toString();
          if (isValidRedirectForRole(requestedPath, userRole)) {
-            redirectPath = requestedPath;
+            redirectPath = `${requestedPath}?loggedIn=true`;
          } else {
-            redirectPath = getDefaultDashboardRoute(userRole);
+            redirectPath = `${getDefaultDashboardRoute(userRole)}?loggedIn=true`;
          }
       }
-      redirect(redirectPath || getDefaultDashboardRoute(userRole));
+      redirect(`${redirectPath || getDefaultDashboardRoute(userRole)}?loggedIn=true`);
 
       // if (!result.success) {
       //    throw new Error(result.message || "Login failed");

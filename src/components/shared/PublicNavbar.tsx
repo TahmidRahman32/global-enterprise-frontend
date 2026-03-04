@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { useId } from "react";
 import { MailIcon, SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,18 +7,23 @@ import SparkleNavbar from "../lightswind/sparkle-navbar";
 import MobileMenu from "../ui/moblie-menu";
 import { ModeToggle } from "../ui/ThemeToggle";
 import Image from "next/image";
-import mainLogo from "../../assets/mainLogo.jpg"
+import mainLogo from "../../assets/mainLogo.jpg";
 import { motion } from "framer-motion";
 import { buttonVariants, itemVariants } from "@/Types/Login";
 import Link from "next/link";
-
+import { getCookie } from "@/services/auth/tokenHandlers";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
+import { LogoutDialog } from "./AlertDialogLogout";
 
 const teams = ["Acme Inc.", "coss.com", "Junon"];
 
 // Navigation links array to be used in both desktop and mobile menus
 
-export default function Navbar() {
+export default async function Navbar() {
    const id = useId();
+
+   const accessToken = await getCookie("accessToken");
 
    return (
       <div className="container mx-auto p-0 absolute top-4 left-0 right-0">
@@ -65,36 +70,8 @@ export default function Navbar() {
 
                {/* Right side */}
                <div className="flex flex-1 items-center justify-end gap-4">
-                  <div className="flex items-center gap-2">
-                     {/* Messages */}
-                     <Button
-                        size="icon"
-                        variant="ghost"
-                        className="relative size-8 rounded-full text-muted-foreground shadow-none
-                           bg-white/40 dark:bg-gray-800/40 hover:bg-white/60 dark:hover:bg-gray-800/60
-                           backdrop-blur-sm border border-white/30 dark:border-gray-700/30"
-                        aria-label="Open notifications "
-                     >
-                        <MailIcon size={16} aria-hidden="true" />
-                        <div aria-hidden="true" className="absolute top-0.5 right-0.5 size-1 rounded-full bg-primary" />
-                     </Button>
-                     {/* Notification menu */}
-
-                     <ModeToggle />
-                     <Link href="/login">
-                        {/* Login Button */}
-                        <motion.div variants={itemVariants}>
-                           <motion.button
-                              variants={buttonVariants}
-                              initial="initial"
-                              type="submit"
-                              className="w-full bg-gradient-to-r from-[#c4840d] to-[text-black py-1 font-primary-bebas rounded-lg shadow-lg hover:shadow-xl transition-shadow disabled:opacity-70 disabled:cursor-not-allowed px-5 transform-gpu hover:scale-[1.04] active:scale-[0.98]  duration-500 text-xl"
-                           >
-                              Login
-                           </motion.button>
-                        </motion.div>
-                     </Link>
-                  </div>
+                  {accessToken ? <LogoutDialog /> : <LoginButton />}
+                  {/* <LogoutButton /> */}
                   {/* User menu */}
                   {/* <UserMenu /> */}
                </div>

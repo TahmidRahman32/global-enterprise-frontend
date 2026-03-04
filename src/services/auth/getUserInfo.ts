@@ -6,7 +6,8 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { getCookie } from "./tokenHandlers";
 import { serverFetch } from "@/lib/server-fetch";
-import { UserInfo } from "@/Types/user.interface";
+import { UserInfo } from "@/Types/user.interfece";
+
 // import { getCookie } from "./tokenHandlers";
 
 export const getUserInfo = async (): Promise<UserInfo | any> => {
@@ -35,7 +36,7 @@ export const getUserInfo = async (): Promise<UserInfo | any> => {
       }
 
       userInfo = {
-         name: result.data.admin?.name || result.data.doctor?.name || result.data.patient?.name || result.data.name || "Unknown User",
+         name: result.data.admin?.name || result.data.user?.name || result.data.name || "Unknown User",
          ...result.data,
       };
 

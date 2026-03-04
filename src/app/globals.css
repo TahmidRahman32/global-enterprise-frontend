@@ -46,8 +46,8 @@
    --radius-3xl: calc(var(--radius) + 12px);
    --radius-4xl: calc(var(--radius) + 16px);
    --font-primary-inter: "Inter", sans-serif;
-    --font-primary-bebas: "Bebas Neue", sans-serif;
-    --font-primary-BB: "BBH Bogle", sans-serif;;
+   --font-primary-bebas: "Bebas Neue", sans-serif;
+   --font-primary-BB: "BBH Bogle", sans-serif;
 }
 
 :root {
@@ -126,4 +126,14 @@
    body {
       @apply bg-background text-foreground;
    }
+}
+
+[data-radix-popper-content-wrapper],
+[data-radix-dialog-content] {
+   background: black !important;
+   color: white !important;
+   border: 5px solid var(--border) !important;
+   min-width: 300px !important;
+   min-height: 100px !important;
+   z-index: 9999 !important;
 }

@@ -43,7 +43,11 @@ export const buttonVariants: Variants = {
 };
 
 export type ActionState = {
-   errors?: Record<string, string>;
    success?: boolean;
    message?: string;
+   errors?: Record<string, string>;
+   // …other fields…
+
+   // added so the server action can tell the client where to navigate next
+   redirectTo?: string;
 };

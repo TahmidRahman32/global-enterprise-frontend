@@ -13,6 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { navItems } from "./Nav/Navbar";
 import Link from "next/link";
+import { LogoutDialog } from "@/components/shared/AlertDialogLogout";
 
 // Mock data
 const chartData = [
@@ -143,7 +144,7 @@ const BarcodePrintDashboard: React.FC = () => {
                <div className="flex items-center space-x-4">
                   <Button variant="ghost" size="icon" className="relative">
                      <Bell size={20} />
-                     <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                     <span className="absolute top-1 right-1 w-2 h-2  rounded-full"></span>
                   </Button>
                   <DropdownMenu>
                      <DropdownMenuTrigger asChild>
@@ -157,7 +158,7 @@ const BarcodePrintDashboard: React.FC = () => {
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>Profile</DropdownMenuItem>
                         <DropdownMenuItem>Settings</DropdownMenuItem>
-                        <DropdownMenuItem>Logout</DropdownMenuItem>
+                      
                      </DropdownMenuContent>
                   </DropdownMenu>
                </div>

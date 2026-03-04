@@ -5,6 +5,7 @@
 import { registerSchema } from "@/components/Auth/register/RegisterPage";
 import { ActionState } from "@/Types/Login";
 import { loginUser } from "./loginUser";
+import { serverFetch } from "@/lib/server-fetch";
 
 // export const submitAction = async (_currentState: ActionState, formData: FormData): Promise<ActionState> => {
 //    // Extract values from FormData
@@ -92,8 +93,8 @@ export const submitAction = async (_currentState: ActionState, formData: FormDat
       // }
 
       console.log("Registration attempt with:", { name, email });
-      const res = await fetch(`http://localhost:5000/api/v1/user/create`, {
-         method: "POST",
+      const res = await serverFetch.post(`/user/create`, {
+         // method: "POST",
          headers: { "Content-Type": "application/json" },
          body: JSON.stringify({ name, email, password }),
       });
